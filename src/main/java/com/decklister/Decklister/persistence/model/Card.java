@@ -1,15 +1,17 @@
-package com.decklister.Decklister.Persistence;
+package com.decklister.Decklister.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Card {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -18,6 +20,12 @@ public class Card {
     private String uuid = UUID.randomUUID().toString();
 
     private String name;
-    @ManyToOne
+
+    private int quantity;
+
+    @ManyToOne(optional = false)
+    @JsonBackReference
     private Deck deck;
+
+
 }
