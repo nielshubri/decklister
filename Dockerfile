@@ -1,0 +1,3 @@
+FROM mysql:latest AS decklisterdb
+ENV MYSQL_ROOT_PASSWORD 123
+EXPOSE 3306
