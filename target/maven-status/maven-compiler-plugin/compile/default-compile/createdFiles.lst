@@ -1,5 +1,4 @@
-com\decklister\Decklister\persistence\Card.class
-com\decklister\Decklister\service\DeckService.class
-com\decklister\Decklister\persistence\Deck.class
-com\decklister\Decklister\repository\CardRepository.class
+com\decklister\Decklister\persistence\repository\UserRepository.class
+com\decklister\Decklister\persistence\model\User.class
 com\decklister\Decklister\DecklisterApplication.class
+com\decklister\Decklister\config\MethodSecurityConfig.class

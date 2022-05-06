@@ -1,5 +1,7 @@
 package com.decklister.Decklister.config;
 
+import com.decklister.Decklister.persistence.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,21 +15,38 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    UserRepository userRepository;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("judge").password(passwordEncoder().encode("123")).roles("JUDGE").and().withUser("participant").password(passwordEncoder().encode("123")).roles("PARTICIPANT");
+        auth
+                .inMemoryAuthentication()
+                .withUser("judge").password(passwordEncoder().encode("123")).roles("JUDGE")
+                .and()
+                .withUser("participant").password(passwordEncoder().encode("123")).roles("PARTICIPANT");
     }
 
     @Bean
-    PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+        http
+                .authorizeRequests().anyRequest().authenticated()
 
-        http.csrf().disable();
+                .and()
 
+                .formLogin()
+
+                .and()
+
+                .httpBasic()
+
+                .and()
+
+                .csrf().disable();
     }
 }

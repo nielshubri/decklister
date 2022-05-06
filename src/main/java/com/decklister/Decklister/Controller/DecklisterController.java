@@ -2,8 +2,10 @@ package com.decklister.Decklister.Controller;
 
 import com.decklister.Decklister.persistence.model.Card;
 import com.decklister.Decklister.persistence.model.Deck;
+import com.decklister.Decklister.persistence.model.User;
 import com.decklister.Decklister.persistence.repository.CardRepository;
 import com.decklister.Decklister.persistence.repository.DeckRepository;
+import com.decklister.Decklister.persistence.repository.UserRepository;
 import com.decklister.Decklister.service.DecklisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,9 +22,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class DecklisterController {
     @Autowired
     private DecklisterService decklisterService;
-
-    @Autowired
-    private DeckRepository deckRepository;
 
     @Secured("ROLE_JUDGE")
     @GetMapping("/decks")
@@ -44,5 +43,13 @@ public class DecklisterController {
     @GetMapping("/cards")
     public Iterable<Card> findAllCards() {
         return decklisterService.findAllCards();
+    }
+
+    @GetMapping("/users")
+    public Iterable<User> findAllUsers() {return decklisterService.findAllUsers();}
+
+    @PostMapping("/users")
+    public User createUser(@RequestBody User newUser) {
+        return decklisterService.createUser(newUser);
     }
 }
