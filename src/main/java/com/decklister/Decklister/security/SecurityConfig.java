@@ -1,4 +1,4 @@
-package com.decklister.Decklister.config;
+package com.decklister.Decklister.security;
 
 import com.decklister.Decklister.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +16,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserRepository userRepository;
+    DecklisterUserDetailsService decklisterUserDetailsService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("judge").password(passwordEncoder().encode("123")).roles("JUDGE")
-                .and()
-                .withUser("participant").password(passwordEncoder().encode("123")).roles("PARTICIPANT");
+        auth.userDetailsService(decklisterUserDetailsService);
     }
 
     @Bean
@@ -35,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/decklister/admin/**").permitAll()
 
                 .and()
 

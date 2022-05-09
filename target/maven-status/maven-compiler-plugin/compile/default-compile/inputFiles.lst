@@ -1,11 +1,12 @@
-C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\config\MethodSecurityConfig.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\model\Deck.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\repository\DeckRepository.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\model\Card.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\repository\UserRepository.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\Controller\DecklisterController.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\model\User.java
-C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\config\SecurityConfig.java
+C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\security\MethodSecurityConfig.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\service\DecklisterService.java
+C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\security\DecklisterUserDetailsService.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\DecklisterApplication.java
+C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\security\SecurityConfig.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\repository\CardRepository.java

@@ -3,6 +3,8 @@ package com.decklister.Decklister.persistence.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -16,7 +18,9 @@ public class User {
     @Column(unique = true, nullable = false, updatable = false)
     private String uuid = UUID.randomUUID().toString();
 
-    private String name;
+    private String email;
 
     private String password;
+
+    private String role;
 }

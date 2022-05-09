@@ -1,6 +1,6 @@
 package com.decklister.Decklister.service;
 
-import com.decklister.Decklister.config.SecurityConfig;
+import com.decklister.Decklister.security.SecurityConfig;
 import com.decklister.Decklister.persistence.model.Card;
 import com.decklister.Decklister.persistence.model.Deck;
 import com.decklister.Decklister.persistence.model.User;
