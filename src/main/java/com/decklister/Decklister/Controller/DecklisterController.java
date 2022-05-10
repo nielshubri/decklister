@@ -2,6 +2,7 @@ package com.decklister.Decklister.Controller;
 
 import com.decklister.Decklister.persistence.model.Card;
 import com.decklister.Decklister.persistence.model.Deck;
+import com.decklister.Decklister.persistence.model.Participant;
 import com.decklister.Decklister.persistence.model.User;
 import com.decklister.Decklister.persistence.repository.CardRepository;
 import com.decklister.Decklister.persistence.repository.DeckRepository;
@@ -18,31 +19,38 @@ import java.util.Set;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "/decklister")
 public class DecklisterController {
     @Autowired
     private DecklisterService decklisterService;
 
-    @Secured("ROLE_JUDGE")
-    @GetMapping("/decks")
+    @GetMapping("/judge/decks")
     public Iterable<Deck> findAllDecks() {
         return decklisterService.findAllDecks();
     }
 
-    @Secured({"ROLE_PARTICIPANT","ROLE_JUDGE"})
-    @PostMapping(value = "/decks")
+    @GetMapping("/judge/cards")
+    public Iterable<Card> findAllCards() {
+        return decklisterService.findAllCards();
+    }
+
+    @GetMapping("/judge/participants")
+    public Iterable<Participant> findAllParticipants() {
+        return decklisterService.findAllParticipants();
+    }
+
+    @PostMapping(value = "/participant/decks")
     public Deck createDeck(@RequestBody Deck newDeck) {
         return decklisterService.createDeck(newDeck);
     }
 
-    @DeleteMapping(value = "/decks/{deckName}")
-    public void deleteDeck(@PathVariable String deckName) {
-        decklisterService.deleteDeck(deckName);
+    @PostMapping(value = "/participant/create")
+    public Participant createParticipant(@RequestBody Participant newParticipant) {
+        return decklisterService.createParticipant(newParticipant);
     }
 
-    @GetMapping("/cards")
-    public Iterable<Card> findAllCards() {
-        return decklisterService.findAllCards();
+    @DeleteMapping(value = "/participant/decks/{deckName}")
+    public void deleteDeck(@PathVariable String deckName) {
+        decklisterService.deleteDeck(deckName);
     }
 
     @GetMapping("/users")

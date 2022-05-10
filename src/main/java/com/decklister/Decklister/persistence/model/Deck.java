@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude="cards")
+@EqualsAndHashCode(exclude={"cards", "participant"})
 public class Deck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,11 @@ public class Deck {
 
     private String name;
 
+    @OneToOne(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Participant participant;
+
     @OneToMany(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference
-    private Set<Card> cards = new HashSet<>();
+    private Set<Card> cards;
 }
