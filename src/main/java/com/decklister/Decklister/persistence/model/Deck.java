@@ -5,13 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude={"cards", "participant"})
+@EqualsAndHashCode(exclude={"cards", "player"})
 public class Deck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +23,7 @@ public class Deck {
 
     @OneToOne(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference
-    private Participant participant;
+    private Player player;
 
     @OneToMany(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference

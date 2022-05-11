@@ -6,5 +6,5 @@ INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (2, uuid(), 'Sneak A
 INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (3, uuid(), 'Forest', 7, 2);
 INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (4, uuid(), 'Nettle Sentinel', 4, 2);
 
-INSERT INTO participant (id, uuid, name, deck_id) VALUES (1, uuid(), 'Niels Huntebrinker', 1);
-INSERT INTO participant (id, uuid, name, deck_id) VALUES (2, uuid(), 'Heiko', 2);
+INSERT INTO player (id, uuid, name, deck_id) VALUES (1, uuid(), 'Niels', 1);
+INSERT INTO player (id, uuid, name, deck_id) VALUES (2, uuid(), 'Heiko', 2);

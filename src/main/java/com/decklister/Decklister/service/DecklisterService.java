@@ -1,7 +1,7 @@
 package com.decklister.Decklister.service;
 
-import com.decklister.Decklister.persistence.model.Participant;
-import com.decklister.Decklister.persistence.repository.ParticipantRepository;
+import com.decklister.Decklister.persistence.model.Player;
+import com.decklister.Decklister.persistence.repository.PlayerRepository;
 import com.decklister.Decklister.security.SecurityConfig;
 import com.decklister.Decklister.persistence.model.Card;
 import com.decklister.Decklister.persistence.model.Deck;
@@ -26,7 +26,7 @@ public class DecklisterService {
     private UserRepository userRepository;
 
     @Autowired
-    private ParticipantRepository participantRepository;
+    private PlayerRepository playerRepository;
 
     @Autowired
     private SecurityConfig securityConfig;
@@ -36,24 +36,13 @@ public class DecklisterService {
     }
 
     public Deck createDeck (Deck newDeck) {
-        if (newDeck.getParticipant() == null) {
+        if (newDeck.getPlayer() == null) {
             throw new IllegalArgumentException("a deck must have a player");
         }
         if (newDeck.getCards() == null) {
             throw new IllegalArgumentException("a deck must have cards");
         }
         return deckRepository.save(newDeck);
-    }
-    public Participant createParticipant (Participant newParticipant) {
-        return participantRepository.save(newParticipant);
-    }
-
-    public Iterable<Card> findAllCards() {
-        return cardRepository.findAll();
-    }
-
-    public Iterable<Participant> findAllParticipants() {
-        return participantRepository.findAll();
     }
 
     public void deleteDeck (String deckName) {
@@ -66,9 +55,7 @@ public class DecklisterService {
     }
 
     public User createUser (User user)  {
-        User newUser = new User();
-        newUser = user;
-        newUser.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
-        return userRepository.save(newUser);
+        user.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
+        return userRepository.save(user);
     }
 }

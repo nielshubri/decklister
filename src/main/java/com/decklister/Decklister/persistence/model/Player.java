@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-public class Participant {
+public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
