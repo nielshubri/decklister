@@ -38,18 +38,17 @@ public class DecklisterService {
     }
 
     @Transactional
-    public Player registerPlayer (Player newPlayer) {
+    public Player registerPlayer(Player newPlayer) {
         Player existingPlayer = playerRepository.findByNameEquals(newPlayer.getName());
         if (existingPlayer == null) {
             return playerRepository.save(newPlayer);
-        }
-        else {
+        } else {
             existingPlayer.setDeck(newPlayer.getDeck());
-            return playerRepository.save(newPlayer);
+            return playerRepository.save(existingPlayer);
         }
     }
 
-    public void deleteDeck (String deckName) {
+    public void deleteDeck(String deckName) {
         Deck deckToDelete = deckRepository.findByNameEquals(deckName);
         deckRepository.delete(deckToDelete);
     }
@@ -58,8 +57,18 @@ public class DecklisterService {
         return userRepository.findAll();
     }
 
-    public User createUser (User user)  {
+    @Transactional
+    public User createUser(User user) {
         user.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
-        return userRepository.save(user);
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser == null) {
+            return userRepository.save(user);
+        }
+        else {
+            existingUser.setPassword(user.getPassword());
+            existingUser.setRole(user.getRole());
+            return existingUser;
+        }
+
     }
 }
