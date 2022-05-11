@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @NoArgsConstructor
 public class DecklisterService {
@@ -31,18 +33,20 @@ public class DecklisterService {
     @Autowired
     private SecurityConfig securityConfig;
 
-    public Iterable<Deck> findAllDecks() {
-        return deckRepository.findAll();
+    public Iterable<Player> findAllPlayers() {
+        return playerRepository.findAll();
     }
 
-    public Deck createDeck (Deck newDeck) {
-        if (newDeck.getPlayer() == null) {
-            throw new IllegalArgumentException("a deck must have a player");
+    @Transactional
+    public Player registerPlayer (Player newPlayer) {
+        Player existingPlayer = playerRepository.findByNameEquals(newPlayer.getName());
+        if (existingPlayer == null) {
+            return playerRepository.save(newPlayer);
         }
-        if (newDeck.getCards() == null) {
-            throw new IllegalArgumentException("a deck must have cards");
+        else {
+            existingPlayer.setDeck(newPlayer.getDeck());
+            return playerRepository.save(newPlayer);
         }
-        return deckRepository.save(newDeck);
     }
 
     public void deleteDeck (String deckName) {

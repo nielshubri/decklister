@@ -13,14 +13,14 @@ public class DecklisterController {
     @Autowired
     private DecklisterService decklisterService;
 
-    @GetMapping("/judge/decks")
-    public Iterable<Deck> findAllDecks() {
-        return decklisterService.findAllDecks();
+    @GetMapping("/judge/players")
+    public Iterable<Player> findAllPlayers() {
+        return decklisterService.findAllPlayers();
     }
 
-    @PostMapping(value = "/player/decks")
-    public Deck createDeck(@RequestBody Deck newDeck) {
-        return decklisterService.createDeck(newDeck);
+    @PostMapping(value = "/player/register")
+    public Player registerPlayer(@RequestBody Player newPlayer) {
+        return decklisterService.registerPlayer(newPlayer);
     }
 
     @DeleteMapping(value = "/player/decks/{deckName}")

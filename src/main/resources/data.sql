@@ -1,10 +1,10 @@
-INSERT INTO deck (id, uuid, name) VALUES (1, uuid(), 'SneakAndShow');
-INSERT INTO deck (id, uuid, name) VALUES (2, uuid(), 'Elves');
+INSERT INTO player (id, name) VALUES (1, 'Niels');
+INSERT INTO player (id, name) VALUES (2, 'Heiko');
 
-INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (1, uuid(), 'Griselbrand', 4, 1);
-INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (2, uuid(), 'Sneak Attack', 4, 1);
-INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (3, uuid(), 'Forest', 7, 2);
-INSERT INTO card (id, uuid, name, quantity, deck_id) VALUES (4, uuid(), 'Nettle Sentinel', 4, 2);
+INSERT INTO deck (id, name, player_id) VALUES (1, 'SneakAndShow', 1);
+INSERT INTO deck (id, name, player_id) VALUES (2, 'Elves', 2);
 
-INSERT INTO player (id, uuid, name, deck_id) VALUES (1, uuid(), 'Niels', 1);
-INSERT INTO player (id, uuid, name, deck_id) VALUES (2, uuid(), 'Heiko', 2);
+INSERT INTO card (id, name, quantity, deck_id) VALUES (1, 'Griselbrand', 4, 1);
+INSERT INTO card (id, name, quantity, deck_id) VALUES (2, 'Sneak Attack', 4, 1);
+INSERT INTO card (id, name, quantity, deck_id) VALUES (3, 'Forest', 7, 2);
+INSERT INTO card (id, name, quantity, deck_id) VALUES (4, 'Nettle Sentinel', 4, 2);

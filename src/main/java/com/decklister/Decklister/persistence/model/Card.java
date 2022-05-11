@@ -14,14 +14,13 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true, nullable = false, updatable = false)
-    private String uuid = UUID.randomUUID().toString();
-
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JsonBackReference
     private Deck deck;
 

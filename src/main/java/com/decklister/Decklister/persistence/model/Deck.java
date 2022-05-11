@@ -1,5 +1,6 @@
 package com.decklister.Decklister.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,13 +17,11 @@ public class Deck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true, nullable = false, updatable = false)
-    private String uuid = UUID.randomUUID().toString();
-
+    @Column(nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @JsonBackReference
     private Player player;
 
     @OneToMany(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
