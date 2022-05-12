@@ -3,7 +3,6 @@ package com.decklister.Decklister.service;
 import com.decklister.Decklister.persistence.model.Player;
 import com.decklister.Decklister.persistence.repository.PlayerRepository;
 import com.decklister.Decklister.security.SecurityConfig;
-import com.decklister.Decklister.persistence.model.Card;
 import com.decklister.Decklister.persistence.model.Deck;
 import com.decklister.Decklister.persistence.model.User;
 import com.decklister.Decklister.persistence.repository.CardRepository;
@@ -40,12 +39,10 @@ public class DecklisterService {
     @Transactional
     public Player registerPlayer(Player newPlayer) {
         Player existingPlayer = playerRepository.findByNameEquals(newPlayer.getName());
-        if (existingPlayer == null) {
-            return playerRepository.save(newPlayer);
-        } else {
-            existingPlayer.setDeck(newPlayer.getDeck());
-            return playerRepository.save(existingPlayer);
+        if (existingPlayer != null) {
+            playerRepository.deleteById(existingPlayer.getId());
         }
+        return playerRepository.save(newPlayer);
     }
 
     public void deleteDeck(String deckName) {

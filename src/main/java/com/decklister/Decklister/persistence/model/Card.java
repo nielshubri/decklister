@@ -20,7 +20,7 @@ public class Card {
     @Column(nullable = false)
     private int quantity;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JsonBackReference
     private Deck deck;
 

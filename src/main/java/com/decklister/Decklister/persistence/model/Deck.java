@@ -20,7 +20,7 @@ public class Deck {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonBackReference
     private Player player;
 

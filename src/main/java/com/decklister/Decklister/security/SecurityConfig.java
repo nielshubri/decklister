@@ -30,12 +30,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/users").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/judge/**").hasRole("JUDGE")
                 .antMatchers("/player/**").hasRole("PLAYER")
 
                 .and()
 
                 .httpBasic()
+
+                .and()
+
+                .headers().frameOptions().disable()
 
                 .and()
 
