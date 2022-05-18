@@ -1,18 +1,16 @@
 package com.decklister.Decklister.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.Set;
-import java.util.UUID;
+import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude={"cards", "player"})
 public class Deck {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,11 +18,7 @@ public class Deck {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Player player;
-
-    @OneToMany(mappedBy = "deck", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Card> cards;
+    @OneToMany(cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
+    private List<Card> cards;
 }

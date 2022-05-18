@@ -23,9 +23,9 @@ public class DecklisterController {
         return decklisterService.registerPlayer(newPlayer);
     }
 
-    @DeleteMapping(value = "/player/decks/{deckName}")
-    public void deleteDeck(@PathVariable String deckName) {
-        decklisterService.deleteDeck(deckName);
+    @DeleteMapping(value = "/player/delete/{playerName}")
+    public void deletePlayer(@PathVariable String playerName) {
+        decklisterService.deletePlayer(playerName);
     }
 
     @GetMapping("/users")

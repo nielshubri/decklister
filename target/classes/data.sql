@@ -1,10 +1,17 @@
-INSERT INTO player (id, name) VALUES (1, 'Niels');
-INSERT INTO player (id, name) VALUES (2, 'Heiko');
+INSERT INTO CARD VALUES(1, 'brainstorm', 4);
+INSERT INTO CARD VALUES(2, 'ponder', 4);
+INSERT INTO CARD VALUES(3, 'preordain', 4);
+INSERT INTO CARD VALUES(4, 'cloudpost', 4);
+INSERT INTO CARD VALUES(5, 'glimmerpost', 4);
 
-INSERT INTO deck (id, name, player_id) VALUES (1, 'SneakAndShow', 1);
-INSERT INTO deck (id, name, player_id) VALUES (2, 'Elves', 2);
+INSERT INTO DECK VALUES(1, 'sneakAndShow');
+INSERT INTO DECK VALUES(2, 'greenPost');
 
-INSERT INTO card (id, name, quantity, deck_id) VALUES (1, 'Griselbrand', 4, 1);
-INSERT INTO card (id, name, quantity, deck_id) VALUES (2, 'Sneak Attack', 4, 1);
-INSERT INTO card (id, name, quantity, deck_id) VALUES (3, 'Forest', 7, 2);
-INSERT INTO card (id, name, quantity, deck_id) VALUES (4, 'Nettle Sentinel', 4, 2);
+INSERT INTO DECK_CARDS VALUES(1, 1);
+INSERT INTO DECK_CARDS VALUES(1, 2);
+INSERT INTO DECK_CARDS VALUES(1, 3);
+INSERT INTO DECK_CARDS VALUES(2, 4);
+INSERT INTO DECK_CARDS VALUES(2, 5);
+
+INSERT INTO PLAYER VALUES(1, 'Niels', 1);
+INSERT INTO PLAYER VALUES(2, 'Nick', 2);

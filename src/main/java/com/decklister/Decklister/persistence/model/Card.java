@@ -1,10 +1,8 @@
 package com.decklister.Decklister.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -19,10 +17,4 @@ public class Card {
 
     @Column(nullable = false)
     private int quantity;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Deck deck;
-
-
 }
