@@ -34,10 +34,6 @@ public class DecklisterService {
     }
 
     public Player registerPlayer(Player newPlayer) {
-        Player existingPlayer = playerRepository.findByNameEquals(newPlayer.getName());
-        if (existingPlayer != null) {
-            playerRepository.deleteById(existingPlayer.getId());
-        }
         return playerRepository.save(newPlayer);
     }
 

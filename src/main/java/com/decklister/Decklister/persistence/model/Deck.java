@@ -21,4 +21,12 @@ public class Deck {
     @OneToMany(cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     private List<Card> cards;
+
+    public Deck () {
+    }
+
+    public Deck (String name, List<Card> cards) {
+        this.name = name;
+        this.cards = cards;
+    }
 }

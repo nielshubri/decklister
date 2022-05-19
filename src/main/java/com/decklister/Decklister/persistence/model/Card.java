@@ -17,4 +17,12 @@ public class Card {
 
     @Column(nullable = false)
     private int quantity;
+
+    public Card () {
+    }
+
+    public Card (String name, int quantity) {
+        this.name = name;
+        this.quantity = quantity;
+    }
 }

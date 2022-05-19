@@ -18,6 +18,7 @@ public class User {
     @Column(unique = true, nullable = false, updatable = false)
     private String uuid = UUID.randomUUID().toString();
 
+    @Column(unique = true)
     private String email;
 
     private String password;
