@@ -32,9 +32,9 @@ class PlayerRepositoryIntegrationTest {
 
         Player newPlayer = new Player("Niels", newDeck);
 
-        playerRepository.save(newPlayer);
+        newPlayer = playerRepository.save(newPlayer);
 
-        assertThat(entityManager.find(Player.class,newPlayer.getId())).isEqualTo(newPlayer);
+        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(newPlayer);
     }
 
     @Test
@@ -51,11 +51,11 @@ class PlayerRepositoryIntegrationTest {
 
         newCard.setQuantity(newCard.getQuantity() + 1);
         newDeck.setName(newDeck.getName() + "test");
-        newPlayer.setName(newPlayer.getName() + "test");
 
-        playerRepository.save(newPlayer);
+        newPlayer = playerRepository.save(newPlayer);
 
-        assertThat(entityManager.find(Deck.class,newDeck.getId())).isEqualTo(newDeck);
+        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(newPlayer);
+        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(newPlayer);
     }
 
     @Test
@@ -72,7 +72,7 @@ class PlayerRepositoryIntegrationTest {
 
         playerRepository.delete(newPlayer);
 
-        assertThat(entityManager.find(Player.class,newPlayer.getId())).isEqualTo(null);
+        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(null);
         assertThat(entityManager.find(Deck.class,newDeck.getId())).isEqualTo(null);
         assertThat(entityManager.find(Card.class,newCard.getId())).isEqualTo(null);
     }
