@@ -1,7 +1,5 @@
 package com.decklister.Decklister.Controller;
 
-import com.decklister.Decklister.persistence.model.Card;
-import com.decklister.Decklister.persistence.model.Deck;
 import com.decklister.Decklister.persistence.model.Player;
 import com.decklister.Decklister.persistence.model.User;
 import com.decklister.Decklister.service.DecklisterService;

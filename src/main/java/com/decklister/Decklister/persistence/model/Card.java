@@ -1,5 +1,7 @@
 package com.decklister.Decklister.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private long id;
 
     @Column(nullable = false)
@@ -17,6 +20,10 @@ public class Card {
 
     @Column(nullable = false)
     private int quantity;
+
+    @ManyToOne
+    @JsonBackReference
+    private Player player;
 
     public Card () {
     }

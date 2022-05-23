@@ -1,7 +1,6 @@
 package com.decklister.Decklister.persistence.repository;
 
 import com.decklister.Decklister.persistence.model.Card;
-import com.decklister.Decklister.persistence.model.Deck;
 import com.decklister.Decklister.persistence.model.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,14 +23,13 @@ class PlayerRepositoryIntegrationTest {
     TestEntityManager entityManager;
 
     @Test
-    void playerSave() {
+    void save() {
         Card newCard = new Card("Brainstorm", 4);
 
         List<Card> decklist = new ArrayList<>();
         decklist.add(newCard);
-        Deck newDeck = new Deck("SneakAndShow", decklist);
 
-        Player newPlayer = new Player("Niels", newDeck);
+        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
 
         newPlayer = playerRepository.save(newPlayer);
 
@@ -38,59 +37,51 @@ class PlayerRepositoryIntegrationTest {
     }
 
     @Test
-    void playerUpdate() {
+    void deleteById() {
         Card newCard = new Card("Brainstorm", 4);
 
         List<Card> decklist = new ArrayList<>();
         decklist.add(newCard);
-        Deck newDeck = new Deck("SneakAndShow", decklist);
 
-        Player newPlayer = new Player("Niels", newDeck);
-
-        entityManager.persist(newPlayer);
-
-        newCard.setQuantity(newCard.getQuantity() + 1);
-        newDeck.setName(newDeck.getName() + "test");
-
-        newPlayer = playerRepository.save(newPlayer);
-
-        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(newPlayer);
-        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(newPlayer);
-    }
-
-    @Test
-    void playerDelete() {
-        Card newCard = new Card("Brainstorm", 4);
-
-        List<Card> decklist = new ArrayList<>();
-        decklist.add(newCard);
-        Deck newDeck = new Deck("SneakAndShow", decklist);
-
-        Player newPlayer = new Player("Niels", newDeck);
+        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
 
         entityManager.persist(newPlayer);
 
-        playerRepository.delete(newPlayer);
+        playerRepository.deleteById(newPlayer.getName());
 
         assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(null);
-        assertThat(entityManager.find(Deck.class,newDeck.getId())).isEqualTo(null);
         assertThat(entityManager.find(Card.class,newCard.getId())).isEqualTo(null);
     }
 
     @Test
-    void playerFindByNameEquals() {
+    void findById() {
         Card newCard = new Card("Brainstorm", 4);
 
         List<Card> decklist = new ArrayList<>();
         decklist.add(newCard);
-        Deck newDeck = new Deck("SneakAndShow", decklist);
 
-        Player newPlayer = new Player("Niels", newDeck);
+        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
 
         entityManager.persist(newPlayer);
 
-        Player retrievedPlayer = playerRepository.findByNameEquals(newPlayer.getName());
+        Optional<Player> retrievedPlayer = playerRepository.findById(newPlayer.getName());
 
-        assertThat(retrievedPlayer).isEqualTo(newPlayer);
+        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(retrievedPlayer.get());
+    }
+
+    @Test
+    void findAll() {
+        Card newCard = new Card("Brainstorm", 4);
+
+        List<Card> decklist = new ArrayList<>();
+        decklist.add(newCard);
+
+        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
+
+        entityManager.persist(newPlayer);
+
+        Iterable<Player> retrievedPlayer = playerRepository.findAll();
+
+        assertThat(entityManager.find(Player.class,newPlayer.getName())).isEqualTo(retrievedPlayer.iterator().next());
     }
 }

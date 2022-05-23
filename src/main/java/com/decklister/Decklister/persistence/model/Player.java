@@ -1,5 +1,6 @@
 package com.decklister.Decklister.persistence.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,14 +13,18 @@ public class Player {
     @Id
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Deck deck;
+    private String deckname;
+
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Card> cards;
 
     public Player () {
     }
 
-    public Player (String name, Deck deck) {
+    public Player (String name, String deckname, List<Card> decklist) {
         this.name = name;
-        this.deck = deck;
+        this.deckname = deckname;
+
     }
 }

@@ -4,7 +4,6 @@ import com.decklister.Decklister.persistence.model.Player;
 import com.decklister.Decklister.persistence.repository.PlayerRepository;
 import com.decklister.Decklister.persistence.model.User;
 import com.decklister.Decklister.persistence.repository.CardRepository;
-import com.decklister.Decklister.persistence.repository.DeckRepository;
 import com.decklister.Decklister.persistence.repository.UserRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 @NoArgsConstructor
 public class DecklisterService {
-    @Autowired
-    private DeckRepository deckRepository;
 
     @Autowired
     private CardRepository cardRepository;
@@ -34,11 +31,16 @@ public class DecklisterService {
     }
 
     public Player registerPlayer(Player newPlayer) {
+        if (playerRepository.findById(newPlayer.getName()).isPresent()) {
+            playerRepository.deleteById(newPlayer.getName());
+        }
         return playerRepository.save(newPlayer);
     }
 
     public void deletePlayer(String playerName) {
-        playerRepository.delete(playerRepository.findByNameEquals(playerName));
+        if (playerRepository.findById(playerName).isPresent()) {
+            playerRepository.deleteById(playerName);
+        }
     }
 
     public User createUser(User user) {

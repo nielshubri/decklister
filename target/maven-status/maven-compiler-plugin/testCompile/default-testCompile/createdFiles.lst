@@ -1,0 +1,3 @@
+com\decklister\Decklister\DecklisterApplicationTests.class
+com\decklister\Decklister\persistence\repository\CardRepositoryIntegrationTest.class
+com\decklister\Decklister\persistence\repository\PlayerRepositoryIntegrationTest.class
