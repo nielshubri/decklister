@@ -1,9 +1,9 @@
 package com.decklister.Decklister.service;
 
+import com.decklister.Decklister.Controller.InvalidRequestException;
 import com.decklister.Decklister.persistence.model.Player;
 import com.decklister.Decklister.persistence.repository.PlayerRepository;
 import com.decklister.Decklister.persistence.model.User;
-import com.decklister.Decklister.persistence.repository.CardRepository;
 import com.decklister.Decklister.persistence.repository.UserRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +15,6 @@ import org.springframework.stereotype.Service;
 public class DecklisterService {
 
     @Autowired
-    private CardRepository cardRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -26,11 +23,7 @@ public class DecklisterService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public Iterable<Player> findAllPlayers() {
-        return playerRepository.findAll();
-    }
-
-    public Player registerPlayer(Player newPlayer) {
+    public Player createPlayer(Player newPlayer) {
         if (playerRepository.findById(newPlayer.getName()).isPresent()) {
             playerRepository.deleteById(newPlayer.getName());
         }
@@ -41,18 +34,29 @@ public class DecklisterService {
         if (playerRepository.findById(playerName).isPresent()) {
             playerRepository.deleteById(playerName);
         }
+        else {
+            throw new InvalidRequestException("Player does not exist");
+        }
     }
 
-    public User createUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User existingUser = userRepository.findByEmail(user.getEmail());
-        if (existingUser == null) {
-            return userRepository.save(user);
+    public Iterable<Player> findAllPlayers() {
+        return playerRepository.findAll();
+    }
+
+    public User createUser(User newUser) {
+        if (userRepository.findById(newUser.getEmail()).isPresent()) {
+            userRepository.deleteById(newUser.getEmail());
+        }
+        newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        return userRepository.save(newUser);
+    }
+
+    public void deleteUser(String email) {
+        if (userRepository.findById(email).isPresent()) {
+            userRepository.deleteById(email);
         }
         else {
-            existingUser.setPassword(user.getPassword());
-            existingUser.setRole(user.getRole());
-            return userRepository.save(existingUser);
+            throw new InvalidRequestException("User does not exist");
         }
     }
 

@@ -12,16 +12,19 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(unique = true, nullable = false, updatable = false)
-    private String uuid = UUID.randomUUID().toString();
-
-    @Column(unique = true)
     private String email;
 
+    @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
     private String role;
+
+    public User() {
+    }
+    public User(String email, String password, String role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }

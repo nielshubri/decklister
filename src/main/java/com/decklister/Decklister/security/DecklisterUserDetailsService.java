@@ -22,7 +22,7 @@ public class DecklisterUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
-        final User existingUser = userRepository.findByEmail(email);
+        final User existingUser = userRepository.findById(email).get();
         if (existingUser == null) {
             throw new UsernameNotFoundException("User not found");
         }

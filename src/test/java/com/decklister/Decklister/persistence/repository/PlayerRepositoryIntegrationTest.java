@@ -22,14 +22,20 @@ class PlayerRepositoryIntegrationTest {
     @Autowired
     TestEntityManager entityManager;
 
-    @Test
-    void save() {
-        Card newCard = new Card("Brainstorm", 4);
+    private Player createTestPlayer() {
+        Card testCard = new Card("Brainstorm", 4);
 
         List<Card> decklist = new ArrayList<>();
-        decklist.add(newCard);
+        decklist.add(testCard);
 
-        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
+        Player testPlayer = new Player("Niels", "SneakAndShow", decklist);
+
+        return testPlayer;
+    }
+
+    @Test
+    void save() {
+        Player newPlayer = createTestPlayer();
 
         newPlayer = playerRepository.save(newPlayer);
 
@@ -40,10 +46,7 @@ class PlayerRepositoryIntegrationTest {
     void deleteById() {
         Card newCard = new Card("Brainstorm", 4);
 
-        List<Card> decklist = new ArrayList<>();
-        decklist.add(newCard);
-
-        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
+        Player newPlayer = createTestPlayer();
 
         entityManager.persist(newPlayer);
 
@@ -55,12 +58,7 @@ class PlayerRepositoryIntegrationTest {
 
     @Test
     void findById() {
-        Card newCard = new Card("Brainstorm", 4);
-
-        List<Card> decklist = new ArrayList<>();
-        decklist.add(newCard);
-
-        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
+        Player newPlayer = createTestPlayer();
 
         entityManager.persist(newPlayer);
 
@@ -71,12 +69,7 @@ class PlayerRepositoryIntegrationTest {
 
     @Test
     void findAll() {
-        Card newCard = new Card("Brainstorm", 4);
-
-        List<Card> decklist = new ArrayList<>();
-        decklist.add(newCard);
-
-        Player newPlayer = new Player("Niels", "SneakAndShow", decklist);
+        Player newPlayer = createTestPlayer();
 
         entityManager.persist(newPlayer);
 

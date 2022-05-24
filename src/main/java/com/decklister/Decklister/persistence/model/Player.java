@@ -13,6 +13,7 @@ public class Player {
     @Id
     private String name;
 
+    @Column(nullable = false)
     private String deckname;
 
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

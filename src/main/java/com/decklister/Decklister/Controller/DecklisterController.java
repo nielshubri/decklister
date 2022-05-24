@@ -18,7 +18,7 @@ public class DecklisterController {
 
     @PostMapping(value = "/player/register")
     public Player registerPlayer(@RequestBody Player newPlayer) {
-        return decklisterService.registerPlayer(newPlayer);
+        return decklisterService.createPlayer(newPlayer);
     }
 
     @DeleteMapping(value = "/player/delete/{playerName}")
@@ -32,5 +32,10 @@ public class DecklisterController {
     @PostMapping("/users")
     public User createUser(@RequestBody User newUser) {
         return decklisterService.createUser(newUser);
+    }
+
+    @DeleteMapping(value = "/users/delete/{userEmail}")
+    public void deleteUser(@PathVariable String userEmail) {
+        decklisterService.deletePlayer(userEmail);
     }
 }

@@ -1,3 +1,4 @@
+com\decklister\Decklister\service\DecklisterServiceTest.class
 com\decklister\Decklister\DecklisterApplicationTests.class
-com\decklister\Decklister\persistence\repository\CardRepositoryIntegrationTest.class
 com\decklister\Decklister\persistence\repository\PlayerRepositoryIntegrationTest.class
+com\decklister\Decklister\persistence\repository\UserRepositoryIntegrationTest.class
