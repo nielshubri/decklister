@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=img, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Users</h1>
+
+    <p>email: <span id="email"></span><br>
+        role: <span id="role"></span>
+    </p>
+
+    <script>
+        const urlUsers = 'http://localhost:8080/users'
+
+        getUsers();
+
+        async function getUsers() {
+            const response = await fetch(urlUsers);
+            const data = await response.json();
+
+            console.log('data');
+            console.log(data);
+
+            data.forEach(user => {
+                const email = user['email'];
+                const role = user['role'];
+                console.log(email, role);
+                console.log(user);
+                document.getElementById('email').textContent = email;
+                document.getElementById('role').textContent = role;
+            });
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -5,6 +5,7 @@ com\decklister\Decklister\security\DecklisterUserDetailsService.class
 com\decklister\Decklister\persistence\model\Card.class
 com\decklister\Decklister\persistence\repository\PlayerRepository.class
 com\decklister\Decklister\security\EncoderConfig.class
+com\decklister\Decklister\Controller\InvalidRequestException.class
 com\decklister\Decklister\service\DecklisterService.class
 com\decklister\Decklister\DecklisterApplication.class
 com\decklister\Decklister\Controller\DecklisterController.class
