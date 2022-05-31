@@ -9,39 +9,22 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="getUsers.js"></script>
 
     <style>
-
         .page-content {
             padding: 50px 200px;
         }
 
-        .demo-list-item {
-            width: 300px;
+        .userstablecontainer {
+            padding: 50px 0px;
         }
-
     </style>
-
-    <script>
-
-        function addTodo() {
-
-            todolist.innerHTML += `
-            <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            ${todofield.value}
-                        </span>
-                    </li>
-            `;
-
-            todofield.value = '';
-        }
-
-    </script>
 
 </head>
 
 <body>
+
     <!-- Always shows a header, even in smaller screens. -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
@@ -72,29 +55,27 @@
             <div class="page-content">
                 <!-- Your content goes here -->
 
-                <form onsubmit="addTodo()">
-
-                    <!-- Textfield with Floating Label -->
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="todofield">
-                        <label class="mdl-textfield__label" for="todofield">To do einfügen</label>
-                    </div>
+                <form onsubmit="getUsers();return false">
 
                     <!-- Colored raised button -->
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                        Speichern
+                        get users
                     </button>
 
                 </form>
 
-                <!-- List -->
-                <ul class="demo-list-item mdl-list" id="todolist">
+                <!-- Table -->
+                <div class="userstablecontainer">
+                    <table class="mdl-data-table mdl-js-data-table" id="userstable">
+                        
+                    </table>
+                </div>
 
-                </ul>
 
             </div>
         </main>
     </div>
+
 </body>
 
 </html>
