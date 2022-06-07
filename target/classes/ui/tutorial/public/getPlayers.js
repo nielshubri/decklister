@@ -1,5 +1,12 @@
-async function getUsers() {
-    const url = 'http://localhost:8080/users'
+async function getPlayers() {
+    const url = 'http://localhost:8080/judge/players'
+    const username = 'judge';
+    const password = '123';
+
+    
+
+
+
     const response = await fetch(url);
     const data = await response.json();
 
