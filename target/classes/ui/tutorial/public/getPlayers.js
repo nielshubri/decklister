@@ -5,9 +5,14 @@ async function getPlayers() {
 
     
 
+    const options = {
 
+        headers: {
+            'Authorization': 'Basic ' + Buffer.from(username + ':' + password, 'base64')
+        }
+    };
 
-    const response = await fetch(url);
+    const response = await fetch(url, options);
     const data = await response.json();
 
     userstable.innerHTML = `
