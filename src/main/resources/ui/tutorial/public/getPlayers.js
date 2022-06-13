@@ -1,18 +1,8 @@
 async function getPlayers() {
+
     const url = 'http://localhost:8080/judge/players'
-    const username = 'judge';
-    const password = '123';
-
     
-
-    const options = {
-
-        headers: {
-            'Authorization': 'Basic ' + Buffer.from(username + ':' + password, 'base64')
-        }
-    };
-
-    const response = await fetch(url, options);
+    const response = await     fetch(url, {credentials: 'include'});
     const data = await response.json();
 
     userstable.innerHTML = `

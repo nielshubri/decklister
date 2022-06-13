@@ -9,6 +9,7 @@ app.use(express.json());
 //frontend urls
 const url_frontend_adduser = '/users';
 const url_frontend_getusers = '/users';
+const url_frontend_getplayers = '/players';
 
 app.post(url_frontend_adduser, (request, response) => {
 
@@ -32,27 +33,30 @@ app.post(url_frontend_adduser, (request, response) => {
     response.json(request.body);
 });
 
-app.get(url_frontend_getusers, (request, response) => {
+app.get(url_frontend_getusers, async (request, response) => {
 
     const url_backend_getusers = 'http://localhost:8080/users';
 
     console.log('request: get, url: ' + url_frontend_getusers);
-    console.log(request.body);
 
-
-    //request to backend
-    async function getUsers() {
-
-        const response = await fetch(url_backend_getusers);
-        const data = await response.json();
-        console.log(data);
-
-    }
-
-    const promise = getUsers();  
-
-    console.log(promise);
+    const promise = await fetch(url_backend_getusers);
+    const data = await promise.json();
 
     //response
-    response.json(promise.body);
+    response.json(data);
+
+});
+
+app.get(url_frontend_getplayers, async (request, response) => {
+
+    const url_backend_getusers = 'http://localhost:8080/users';
+
+    console.log('request: get, url: ' + url_frontend_getusers);
+
+    const promise = await fetch(url_backend_getusers);
+    const data = await promise.json();
+
+    //response
+    response.json(data);
+
 });

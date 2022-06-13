@@ -1,6 +1,6 @@
-function addUser() {
+async function addUser() {
 
-    const url = 'http://localhost:8080/users';
+    const url = 'http://localhost:3000/users';
     
     const email = document.getElementById("emailfield").value;
     const password = document.getElementById("passwordfield").value;

@@ -2,9 +2,9 @@ async function addUser() {
 
     const url = 'http://localhost:3000/users';
     
-    const email = document.getElementById("emailfieldwebservertest").value;
-    const password = document.getElementById("passwordfieldwebservertest").value;
-    const role = document.getElementById("rolefieldwebservertest").value;
+    const email = document.getElementById("emailfield").value;
+    const password = document.getElementById("passwordfield").value;
+    const role = document.getElementById("rolefield").value;
 
     const data = {email, password, role};
 

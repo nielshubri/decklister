@@ -25,46 +25,46 @@
 
 <body>
 
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row">
-            <!-- Title -->
-            <span class="mdl-layout-title">Decklister</span>
-            <!-- Add spacer, to align navigation to the right -->
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation. We hide it in small screens. -->
-            <nav class="mdl-navigation mdl-layout--large-screen-only">
-                <a class="mdl-navigation__link" href="addUser.html">Add User</a>
-                <a class="mdl-navigation__link" href="getUsers.html">Get Users</a>
-                <a class="mdl-navigation__link" href="getPlayers.html"> Get Players</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-            </nav>
-        </div>
-    </header>
-    <main class="mdl-layout__content">
-        <div class="page-content">
-            <!-- Your content goes here -->
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Decklister</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="addUser.html">Add User</a>
+                    <a class="mdl-navigation__link" href="getUsers.html">Get Users</a>
+                    <a class="mdl-navigation__link" href="getPlayers.html">Get Players</a>
+                    <a class="mdl-navigation__link" href="">Link</a>
+                </nav>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
 
-            <form onsubmit="getPlayers();return false">
+                <form onsubmit="getPlayers();return false">
 
-                <!-- Colored raised button -->
-                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                    get players
-                </button>
+                    <!-- Colored raised button -->
+                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                        get players
+                    </button>
 
-            </form>
+                </form>
 
-            <!-- Table -->
-            <div class="userstablecontainer">
+                <!-- Table -->
+                <div class="userstablecontainer">
 
-                <table class="mdl-data-table mdl-js-data-table" id="userstable"></table>
+                    <table class="mdl-data-table mdl-js-data-table" id="userstable"></table>
+
+                </div>
 
             </div>
-
-        </div>
-    </main>
-</div>
+        </main>
+    </div>
 
 </body>
 
