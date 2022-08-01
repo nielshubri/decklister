@@ -21,8 +21,7 @@ public class SecurityConfigDev extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
+        http    .authorizeRequests()
                 .antMatchers("/users").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/judge/**").hasRole("JUDGE")
