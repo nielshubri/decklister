@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new user</title>
+</head>
+
+<body>
+    <form method="POST" th:action="@{/mvc/newPlayer}" th:object="${player}">
+        <label for="name">name</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <label for="deckname">deckname</label>
+        <input type="text" id="deckname" th:field="*{deckname}" />
+        <label for="cardName">cardName</label>
+        <input type="text" id="cardName" th:field="*{cards}" />
+        <input type="submit" value="save player">
+    </form>
+</body>
+</html>

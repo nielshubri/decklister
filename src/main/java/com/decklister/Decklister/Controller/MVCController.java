@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -30,6 +31,18 @@ public class MVCController {
         return "users";
     }
 
+    @GetMapping(value = "/newUser")
+    public String newUser(Model model) {
+        model.addAttribute("user", new User());
+        return "new-user";
+    }
+
+    @PostMapping(value = "/newUser")
+    public String addUser(User user) {
+        decklisterService.createUser(user);
+        return "redirect:/mvc/users";
+    }
+
     @GetMapping(value = "/players")
     public String getPlayers(Model model) {
         Iterable<Player> players = decklisterService.findAllPlayers();
@@ -39,5 +52,17 @@ public class MVCController {
         model.addAttribute("players", playerList);
 
         return "players";
+    }
+
+    @GetMapping(value = "/newPlayer")
+    public String newPlayer(Model model) {
+        model.addAttribute("player", new Player());
+        return "new-player";
+    }
+
+    @PostMapping(value = "/newPlayer")
+    public String addPlayer(Player player) {
+        decklisterService.createPlayer(player);
+        return "redirect:/mvc/players";
     }
 }
