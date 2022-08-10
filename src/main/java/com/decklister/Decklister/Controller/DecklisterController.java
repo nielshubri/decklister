@@ -28,7 +28,9 @@ public class DecklisterController {
     }
 
     @GetMapping("/users")
-    public Iterable<User> findAllUsers() {return decklisterService.findAllUsers();}
+    public Iterable<User> findAllUsers() {
+        return decklisterService.findAllUsers();
+    }
 
     @PostMapping("/users")
     public User createUser(@RequestBody User newUser) {

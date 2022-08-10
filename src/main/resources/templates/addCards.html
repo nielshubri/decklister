@@ -6,13 +6,9 @@
 </head>
 
 <body>
-    <form method="POST" th:action="@{/mvc/newPlayer}" th:object="${player}">
-        <label for="name">name</label>
-        <input type="text" id="name" th:field="*{name}" />
-        <label for="deckname">deckname</label>
-        <input type="text" id="deckname" th:field="*{deckname}" />
-        <input type="submit" value="save">
+    <form method="POST" th:action="@{/mvc/newPlayer}" th:object="${cardsDto}">
         <fieldset>
+            <input type="submit" value="save">
             <table>
                 <thead>
                 <tr>

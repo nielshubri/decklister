@@ -3,6 +3,7 @@ C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\repo
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\security\SecurityConfigDev.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\Controller\InvalidRequestException.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\repository\UserRepository.java
+C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\Dtos\CardsDto.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\model\Card.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\persistence\model\Player.java
 C:\Users\NHU\decklister\src\main\java\com\decklister\Decklister\Controller\DecklisterController.java
