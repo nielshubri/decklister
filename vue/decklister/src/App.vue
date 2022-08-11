@@ -1,16 +1,21 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Decklister"/>
+  <createUser/>
+  <getUsers/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import createUser from "./components/createUser.vue";
+import getUsers from './components/getUsers.vue';
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+    createUser,
+    getUsers,
+}
 }
 </script>
 

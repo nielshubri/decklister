@@ -6,7 +6,12 @@
     </p>
     <h3>Users</h3>
     <ul>
-      <input :value="text" @input="onInput" placeholder="Type here">
+      <label for="email">Email</label>
+      <input type="text" id="email" :value="text" @input="onInput" placeholder="Type here">
+      <label for="password">Password</label>
+      <input type="text" id="password" :value="text" @input="onInput" placeholder="Type here">
+      <label for="role">Role</label>
+      <input type="text" id="role" :value="text" @input="onInput" placeholder="Type here">
       <p>{{ text }}</p>
       <button @click="add">add</button>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>

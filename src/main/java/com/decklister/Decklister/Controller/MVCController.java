@@ -87,7 +87,6 @@ public class MVCController {
     public String getCards(Model model) {
         CardsDto cardsDto = new CardsDto();
        // cardsDto.addCard(new Card());
-        cardsDto.setCards();
         model.addAttribute("cardsDto", cardsDto);
         return "addCards";
     }
