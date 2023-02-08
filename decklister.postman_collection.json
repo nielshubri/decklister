@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "fa3df26f-2bac-43a2-a9ba-48b0efe1b3b4",
+		"name": "decklister",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createUser judge",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"uuid\": \"54dca530-cd8e-4423-9196-561f87945376\",\r\n        \"name\": \"Niels Huntebrinker\",\r\n        \"password\": \"pass\"\r\n    }\r\n]"
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createUser player",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"uuid\": \"54dca530-cd8e-4423-9196-561f87945376\",\r\n        \"name\": \"Niels Huntebrinker\",\r\n        \"password\": \"pass\"\r\n    }\r\n]"
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/decklister/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"decklister",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player register",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "player",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Manu\",\r\n        \"deck\": {\r\n            \"name\": \"Doomsday\",\r\n            \"cards\": [\r\n                {\r\n                    \"name\": \"Doomsday\",\r\n                    \"quantity\": 4\r\n                },\r\n                {\r\n                    \"name\": \"Ponder\",\r\n                    \"quantity\": 4\r\n                }\r\n            ]\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/player/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"player",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player deletePlayer",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "judge",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n        \"name\": \"Doomsday\",\r\n        \"cards\": [\r\n            {\r\n\r\n                \"name\": \"Brainstorm\",\r\n                \"quantity\": 4\r\n            },\r\n            {\r\n\r\n                \"name\": \"Ponder\",\r\n                \"quantity\": 4\r\n            },\r\n            {\r\n\r\n                \"name\": \"Doomsday\",\r\n                \"quantity\": 4\r\n            }\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/decklister/decks/SneakAndShow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"decklister",
+						"decks",
+						"SneakAndShow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "judge findAllPlayers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "judge",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n        \"name\": \"Doomsday\",\r\n        \"cards\": [\r\n            {\r\n\r\n                \"name\": \"Brainstorm\",\r\n                \"quantity\": 4\r\n            },\r\n            {\r\n\r\n                \"name\": \"Ponder\",\r\n                \"quantity\": 4\r\n            },\r\n            {\r\n\r\n                \"name\": \"Doomsday\",\r\n                \"quantity\": 4\r\n            }\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/decklister/decks/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"decklister",
+						"decks",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

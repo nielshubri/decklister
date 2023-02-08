@@ -6,7 +6,6 @@ import com.decklister.Decklister.service.DecklisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RestController
 public class DecklisterController {
     @Autowired
